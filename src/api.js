@@ -1,7 +1,7 @@
 // Base URL
-const base_url = `https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}`;
+const base_url = `https://api.rawg.io/api/games?key=${process.env.REACT_APP_RAWG_KEY}`;
 
-// Getting the date
+  // Getting the date
 const getCurrentMonth = () => {
   const month = new Date().getMonth() + 1;
 
@@ -34,5 +34,5 @@ const popular_games = `&dates=${lastYear},${currentDate}&ordering=-rating&page_s
 export const popularGamesUrl = () => {
   return `${base_url}${popular_games}`;
 };
-  
+
 console.log(popularGamesUrl());
