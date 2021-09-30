@@ -2,9 +2,20 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
+// Redux
+import { useDispatch } from "react-redux";
+import { loadDetail } from "../actions/detailAction";
+
 const Game = ({ game }) => {
+  // Load Details
+  const dispatch = useDispatch();
+
+  const loadDetailHandler = () => {
+    dispatch(loadDetail(game.id));
+  };
+
   return (
-    <StyledGame>
+    <StyledGame onClick={loadDetailHandler}>
       <h3>{game.name}</h3>
       <p>{game.released}</p>
       <img src={game.background_image} alt={game.name} />

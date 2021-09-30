@@ -12,6 +12,7 @@ import { motion } from "framer-motion";
 
 const Home = () => {
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(loadGames());
   }, [dispatch]);
