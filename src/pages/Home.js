@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import GameDetail from "../components/GameDetail";
 
 import { loadGames } from "../actions/gamesAction";
 
@@ -12,7 +13,7 @@ import { motion } from "framer-motion";
 
 const Home = () => {
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(loadGames());
   }, [dispatch]);
@@ -23,6 +24,7 @@ const Home = () => {
 
   return (
     <GameList>
+      <GameDetail></GameDetail>
       <h2>Upcoming Games</h2>
       <Games>
         {upcoming.map(game => (
