@@ -31,8 +31,6 @@ const popular_games = `&dates=${lastYear},${currentDate}&ordering=-rating&page_s
 const upcoming_games = `&dates=${currentDate},${nextYear}&ordering=-added&page_size=10`;
 const newGames = `&dates=${lastYear},${currentDate}&ordering=-released&page_size=10`;
 
-console.log(popular_games);
-
 export const popularGamesUrl = () => `${base_url}${popular_games}`;
 export const upcomingGamesUrl = () => `${base_url}${upcoming_games}`;
 export const newGamesUrl = () => `${base_url}${newGames}`;
