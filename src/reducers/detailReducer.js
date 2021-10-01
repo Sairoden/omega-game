@@ -1,6 +1,7 @@
 const initialState = {
   game: { platforms: [] },
   screenshot: { results: [] },
+  isLoading: true,
 };
 
 const detailReducer = (state = initialState, action) => {
@@ -9,7 +10,10 @@ const detailReducer = (state = initialState, action) => {
       ...state,
       game: action.payload.game,
       screenshot: action.payload.screenshot,
+      isLoading: false,
     };
+
+  if (action.type === "LOADING_DETAIL") return { isLoading: true };
 
   return { ...state };
 };

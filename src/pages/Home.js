@@ -17,8 +17,6 @@ const Home = () => {
   const location = useLocation();
   const pathId = location.pathname.split("/")[2];
 
-  console.log(pathId);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
