@@ -10,7 +10,7 @@ import Game from "../components/Game";
 
 // Styling and Animation
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 const Home = () => {
   // Get the current location
@@ -28,27 +28,29 @@ const Home = () => {
 
   return (
     <GameList>
-      {pathId && <GameDetail></GameDetail>}
-      <h2>Upcoming Games</h2>
-      <Games>
-        {upcoming.map(game => (
-          <Game game={game} key={game.id}></Game>
-        ))}
-      </Games>
-
-      <h2>Popular Games</h2>
-      <Games>
-        {popular.map(game => (
-          <Game game={game} key={game.id}></Game>
-        ))}
-      </Games>
-
-      <h2>New Games</h2>
-      <Games>
-        {newGames.map(game => (
-          <Game game={game} key={game.id}></Game>
-        ))}
-      </Games>
+      <AnimateSharedLayout type="crossfade">
+        <AnimatePresence>
+          {pathId && <GameDetail pathId={pathId}></GameDetail>}{" "}
+        </AnimatePresence>
+        <h2>Upcoming Games</h2>
+        <Games>
+          {upcoming.map(game => (
+            <Game game={game} key={game.id}></Game>
+          ))}
+        </Games>
+        <h2>Popular Games</h2>
+        <Games>
+          {popular.map(game => (
+            <Game game={game} key={game.id}></Game>
+          ))}
+        </Games>
+        <h2>New Games</h2>
+        <Games>
+          {newGames.map(game => (
+            <Game game={game} key={game.id}></Game>
+          ))}
+        </Games>
+      </AnimateSharedLayout>
     </GameList>
   );
 };

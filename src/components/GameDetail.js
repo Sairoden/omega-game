@@ -16,7 +16,7 @@ import nintendo from "../img/nintendo.svg";
 import apple from "../img/apple.svg";
 import gamepad from "../img/gamepad.svg";
 
-const GameDetail = () => {
+const GameDetail = ({ pathId }) => {
   const history = useHistory();
 
   // Exit Detail
@@ -59,10 +59,10 @@ const GameDetail = () => {
     <>
       {!isLoading && (
         <CardShadow className="shadow" onClick={exitDetailHandler}>
-          <Detail>
+          <Detail layoutId={pathId}>
             <Stats>
               <div className="rating">
-                <h3>{game.name}</h3>
+                <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
                 <p>Rating: {game.rating}</p>
               </div>
               <Info>
@@ -79,7 +79,8 @@ const GameDetail = () => {
               </Info>
             </Stats>
             <Media>
-              <img
+              <motion.img
+                layoutId={`image ${pathId}`}
                 src={smallImage(game.background_image, 1280)}
                 alt={game.name}
               />
