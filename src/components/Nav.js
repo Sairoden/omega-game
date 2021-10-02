@@ -2,17 +2,40 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import logo from "../img/logo.svg";
 
+// Redux and Routes
+import { fetchSearch } from "../actions/gamesAction";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+
 const Nav = () => {
+  const dispatch = useDispatch();
+  const [textInput, setTextInput] = useState("");
+
+  const inputHandler = e => {
+    setTextInput(e.target.value);
+  };
+
+  const submitSearch = e => {
+    e.preventDefault();
+    dispatch(fetchSearch(textInput));
+  };
+
+  const clearSearched = () => {
+    dispatch({ type: "CLEAR_SEARCHED" });
+  };
+
   return (
     <StyledNav>
-      <Logo>
+      <Logo onClick={clearSearched}>
         <img src={logo} alt="logo" />
         <h1>Omega Game</h1>
       </Logo>
-      <div className="search">
-        <input type="text" />
-        <button>Search</button>
-      </div>
+      <form onChange={inputHandler} className="search">
+        <input value={textInput} type="text" />
+        <button onClick={submitSearch} type="submit">
+          Search
+        </button>
+      </form>
     </StyledNav>
   );
 };
@@ -50,8 +73,6 @@ const Logo = styled(motion.div)`
     height: 2rem;
     width: 2rem;
   }
-
-  
 `;
 
 export default Nav;

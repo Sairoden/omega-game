@@ -42,3 +42,9 @@ export const gameDetailsUrl = game_id =>
 // Game Screenshots
 export const gameScreenshotUrl = game_id =>
   `https://api.rawg.io/api/games/${game_id}/screenshots?key=${process.env.REACT_APP_RAWG_KEY}`;
+
+// Searched game
+export const searchGameUrl = game_name =>
+  `${base_url}&search=${game_name}&page_size=9`;
+
+// games?search=Far Cry 6&page_size=9
