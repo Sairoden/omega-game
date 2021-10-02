@@ -8,9 +8,16 @@ import { useHistory } from "react-router-dom";
 
 import { smallImage } from "../util";
 
+// Images
+import playstation from "../img/playstation.svg";
+import steam from "../img/steam.svg";
+import xbox from "../img/xbox.svg";
+import nintendo from "../img/nintendo.svg";
+import apple from "../img/apple.svg";
+import gamepad from "../img/gamepad.svg";
+
 const GameDetail = () => {
   const history = useHistory();
-  console.log(history);
 
   // Exit Detail
   const exitDetailHandler = e => {
@@ -19,7 +26,29 @@ const GameDetail = () => {
     if (element.classList.contains("shadow")) {
       document.body.style.overflow = "auto";
       history.push("/");
-      console.log(history);
+    }
+  };
+
+  // Get Platform Images
+  const getPlatform = platform => {
+    switch (platform) {
+      case "PlayStation 4":
+        return playstation;
+
+      case "Xbox One":
+        return xbox;
+
+      case "PC":
+        return steam;
+
+      case "Nintendo Switch":
+        return nintendo;
+
+      case "iOS":
+        return apple;
+
+      default:
+        return gamepad;
     }
   };
 
@@ -39,8 +68,12 @@ const GameDetail = () => {
               <Info>
                 <h3>Platforms</h3>
                 <Platforms>
-                  {game.platforms.map(platform => (
-                    <h3 key={platform.platform.id}>{platform.platform.name}</h3>
+                  {game.platforms.map(data => (
+                    <img
+                      key={data.platform.id}
+                      src={getPlatform(data.platform.name)}
+                      alt={data.platform.name}
+                    ></img>
                   ))}
                 </Platforms>
               </Info>
@@ -71,13 +104,13 @@ const GameDetail = () => {
 };
 
 const CardShadow = styled(motion.div)`
-  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  left: 0;
   min-height: 100vh;
   overflow-y: scroll;
-  background: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
-  left: 0;
+  width: 100%;
   z-index: 5;
 
   &::-webkit-scrollbar {
@@ -92,13 +125,13 @@ const CardShadow = styled(motion.div)`
 `;
 
 const Detail = styled(motion.div)`
-  width: 80%;
-  border-radius: 1rem;
-  padding: 2rem 5rem;
   background: white;
-  position: absolute;
-  left: 10%;
+  border-radius: 1rem;
   color: black;
+  left: 10%;
+  padding: 2rem 5rem;
+  position: absolute;
+  width: 80%;
   z-index: 10;
 
   img {
