@@ -19,13 +19,13 @@ const GlobalStyles = createGlobalStyle`
         background: #fff;
       }
     }
-
   }
 
   body {
     font-family: 'Montserrat', sans-serif;
-    width: 100%;
+    width: 100%;    
   }
+
 
   h2 {
     font-size: 3rem;
@@ -56,6 +56,8 @@ const GlobalStyles = createGlobalStyle`
     font-weight: bold;
     border-radius: 0.2rem;
   }
+
+  
 `;
 
 export default GlobalStyles;
